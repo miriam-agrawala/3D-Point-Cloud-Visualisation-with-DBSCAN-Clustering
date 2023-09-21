@@ -1,4 +1,4 @@
-"""This Streamlit application allows users to upload LiDAR PLY files and apply DBSCAN clustering
+"""This Streamlit application allows users to upload LiDAR .ply files and apply DBSCAN clustering
    with various parameters to visualize clusters in a 3D point cloud."""
 
 # Import the Streamlit library and the backend module
