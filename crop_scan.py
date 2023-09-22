@@ -1,14 +1,21 @@
-import open3d as o3d
+"""This script provides an interactive tool for cropping and saving a region of interest (ROI)
+# from a 3D point cloud loaded from a .ply file using Open3D. Users can interactively select
+# and save a portion of the point cloud within a bounding box."""
 
-# Adjust your path accordingly, please remain the r"" format to prevent unicode escape
+# Import the Open3D library for 3D point cloud processing
+import open3d as o3d 
+
+# Adjust your path to the point cloud file you want to use accordingly
+# please use the r"" format to prevent unicode escape
 FILEPATH = r"room_scan.ply" 
 
-# Load the .ply file
+# Load the point cloud from the specified .ply file
 point_cloud = o3d.io.read_point_cloud(FILEPATH)
 
 def pick_points(pcd):
+    
     """
-    Crop and save a region of interest from a point cloud.
+    Crop and save a region of interest from a point cloud interactively.
 
     This function allows you to select and save a region of interest (ROI) from a given point cloud.
 
@@ -32,11 +39,17 @@ def pick_points(pcd):
           3) Press 'S' to save the cropped item.
           4) After the points is saved, press 'Q' to close the window
           """)
-    vis = o3d.visualization.VisualizerWithEditing() # Initialize visualization
+    # Initialize the Open3D visualization
+    vis = o3d.visualization.VisualizerWithEditing() 
     vis.create_window()
+    # Add the point cloud to the visualization
     vis.add_geometry(pcd)
-    vis.run()  # user picks points
+    # Run the interactive cropping tool
+    # user picks points
+    vis.run()  
+    # Close the visualization window
     vis.destroy_window()
 
 if '__name__' == '__main__':
+    # Call the pick_points function to interactively crop the point cloud
     pick_points(point_cloud)
