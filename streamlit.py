@@ -28,7 +28,7 @@ distance_threshold = st.slider("Distance Threshold", 0.005, 0.1, 0.008)
 # The user can modify this slider to adjust the number of iterations RANSAC performs when segmenting planes.
 # A higher value can improve plane fitting accuracy at the cost of computation time.
 ransac_n = st.slider("RANSAC N", 3, 10, 5)
-# The user can control the total number of iterations for various processes in the algorithm.
+# The user can control the total number of iterations for various processes in the RANSAC algorithm.
 # Adjusting this can affect the quality of clustering and segmentation results.
 num_iterations = st.slider("Number of Iterations", 100, 2000, 300) 
 # Epsilon (eps) defines the neighborhood size in DBSCAN clustering.
