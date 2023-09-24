@@ -16,7 +16,7 @@ The different parameters that can be changed to obtain the segmentation are: Flo
 **Wall Treshold:** Sets the threshold for identifying wall surfaces. Increasing it makes the detection more strict, while decreasing it identifies more points as part of walls.  
 **Voxel Size:** Adjusts the voxel size to control the level of point cloud downsampling. A smaller voxel size retains more detail, while a larger size reduces the data for faster processing.  
 **Distance Treshold:** Plane segmentation. It determines when points are considered part of the same plane. A smaller value makes the segmentation more sensitive to variations, while a larger value groups points more aggressively.  
-**RANSAC N:** Total number of iterations for various processes in the algorithm. Adjusting this can affect the quality of clustering and segmentation results.  
+**RANSAC N:** Total number of iterations for various processes in the RANSAC algorithm. Adjusting this can affect the quality of clustering and segmentation results.  
 **Epsilon (eps):** Defines the radius of the neighborhood in DBSCAN clustering. A smaller epsilon creates tighter clusters, while a larger one results in more spread-out clusters. If chosen too small, a higher number of clusters will be created (and more data points will be taken as noise). Whereas, if chosen too big, small clusters will merge into one big cluster and details will be lost.  
 **Minimum points:** Minimum number of points required to form a cluster in DBSCAN. Increasing this value can lead to larger and denser clusters, while decreasing it results in more clusters with fewer points. The value should be at least one greater than the number of dimensions in the dataset.
 
