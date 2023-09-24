@@ -4,7 +4,7 @@ The object of this project was to create a scan using a LiDAR sensor and use the
 
 In the resulting program, the user can upload a LiDAR scan of an environment of their choice into a webapplication and use different handles to find the optimal parameters for an image segmentation. The more accurate the scan captures the environment the better the segmentation will be!
 
-To use the program, please download the "backend.py", "crop_scan.py" and "streamlit.py" and save them in the same folder. After running the streamlit.py in an IDE (like VS Code), a webapplication window will open. There, you can upload your LiDAR Scan in .ply format via drag and drop. Set the handles to your desired values and press "Visualize". A 3D model of your scan, with a segmentation, will open in a new window.  
+To use the program, please download the "backend.py", "crop_scan.py" and "streamlit.py" and save them in the same folder. After running the streamlit.py in an IDE (like VS Code), a webapplication window will open. There, you can upload your LiDAR Scan in .ply format via drag and drop. Set the handles to your desired values and press "Visualize". A 3D model of your scan with a segmentation will open in a new window.  
 
 
 ### Background Knowledge
