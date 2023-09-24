@@ -1,4 +1,4 @@
-# LiDAR
+# 3D Point Cloud Visualisation with DBSCAN Clustering
 
 The object of this project was to create a scan using a LiDAR sensor and use the resulting point cloud to create a 3D model of an environment, that could be segmented in different items.
 
@@ -17,3 +17,5 @@ The different parameters that can be changed to obtain the segmentation are: Flo
 **RANSAC N:** Total number of iterations for various processes in the algorithm. Adjusting this can affect the quality of clustering and segmentation results.  
 **Epsilon (eps):** Defines the neighborhood size in DBSCAN clustering. A smaller epsilon creates tighter clusters, while a larger one results in more spread-out clusters.  
 **Minimum points:** Minimum number of points required to form a cluster in DBSCAN. Increasing this value can lead to larger and denser clusters, while decreasing it results in more clusters with fewer points.
+
+The technique used for clustering is the DBSCAN (Density-Based Spatial Clustering of Applications with Noise). Clustering itself is an unsupervised learning technique to group data points based on specific characteristics. DBSCAN groups densely grouped data points into a single cluster and can identify clusters in large spatial datasets by looking at the local density of the data points, while also being robust to outliers. It requires two parameters: Epsilon and minPoints (Minimum Points). Epsilon is the radius of the circle to be created around each data point to check the density and minPoints is the minimum number of data points required inside that circle for that data point to be classified as a Core point. In higher dimenensions, the circle becomes a hypersphere.
