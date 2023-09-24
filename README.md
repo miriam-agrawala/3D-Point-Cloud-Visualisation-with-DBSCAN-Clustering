@@ -10,7 +10,7 @@ When running the "crop_scan.py" another interactive window will open: you can se
 
 
 ### Background Knowledge
-The different parameters that can be changed to obtain the segmentation are: Floor/Ceiling Threshold, Wall Threshold, Voxel Size, Distance Threshold, Ransac N, Number of Iterations, Epsilon (eps) and Minimum Points. Adjusting each of these parameters has a different effect:    
+The different parameters that can be changed to obtain the segmentation are: Floor/Ceiling Threshold, Wall Threshold, Voxel Size, Distance Threshold, RANSAC N, Number of Iterations, Epsilon (eps) and Minimum Points. Adjusting each of these parameters has a different effect:    
 
 **Floor/Ceiling Threshold:** Sets the threshold for identifying floor and ceiling surfaces. A higher value makes it more strict, while a lower value considers more points as part of the floor or ceiling.  
 **Wall Treshold:** Sets the threshold for identifying wall surfaces. Increasing it makes the detection more strict, while decreasing it identifies more points as part of walls.  
