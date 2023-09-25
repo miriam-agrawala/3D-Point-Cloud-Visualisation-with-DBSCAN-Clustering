@@ -3,6 +3,7 @@
 
 # Import necessary libraries for point cloud processing and visualization
 import plotly.graph_objs as go # Plotly library for 3D visualization
+import plotly.express as px
 import numpy as np # NumPy library for numerical operations
 import open3d as o3d # Open3D library for 3D point cloud processing
 import tempfile # Tempfile module for temporary file handling
@@ -29,18 +30,21 @@ def save_uploaded_file(uploaded_file):
         f.write(uploaded_file.read())
     return file_path
 
-def preprocess_and_cluster_point_cloud(lidar_path, floor_threshold, wall_threshold, voxel_size, distance_threshold, ransac_n, num_iterations, eps, min_points):
-    """Preprocess and cluster a point cloud using DBSCAN."""
+def preprocess(lidar_path, voxel_size, num_neighbours, std_ratio):
+    """Preprocess a point cloud."""
     # Read the point cloud from the specified file path
     lidar = o3d.io.read_point_cloud(lidar_path)
     # Filter out points with NaN values and select valid indices
     valid_indices = np.where(~np.isnan(np.asarray(lidar.points).any(axis=1)))[0]
     lidar = lidar.select_by_index(valid_indices)
     # Remove statistical outliers from the point cloud
-    lidar, _ = lidar.remove_statistical_outlier(nb_neighbors=20, std_ratio=2.0)
+    lidar, _ = lidar.remove_statistical_outlier(num_neighbours, std_ratio)
     # Downsample the point cloud using voxel downsampling
     down_lidar = lidar.voxel_down_sample(voxel_size=voxel_size)
-    
+    return down_lidar
+
+def cluster_point_cloud(down_lidar, floor_threshold, wall_threshold, distance_threshold, ransac_n, num_iterations,eps,min_points):
+    """Cluster a point cloud using DBSCAN."""
     # Iteratively segment planes from the point cloud
     for _ in range(5):
         # Check if the remaining point cloud has less than 3 points, and if so, exit the loop
@@ -75,7 +79,31 @@ def plot_3d_point_cloud(cloud, labels):
             xaxis=dict(nticks=10, range=[cloud[:, 0].min(), cloud[:, 0].max()]),
             yaxis=dict(nticks=10, range=[cloud[:, 1].min(), cloud[:, 1].max()]),
             zaxis=dict(nticks=10, range=[cloud[:, 2].min(), cloud[:, 2].max()]),
-        )
+        ),
+        title="DBScan Clustered Point Cloud"
     )
     # Create a Plotly figure with the scatter plot and layout
     return go.Figure(data=[scatter], layout=layout)
+
+def plot_preprocessed(downsampled_lidar):
+    """Plots filtered point clouds using Plotly."""
+    # Check if the point cloud exists
+    if downsampled_lidar is not None:
+        # Convert Open3D point cloud to a NumPy array
+        point_cloud_np = np.asarray(downsampled_lidar.points)
+
+        # Create a 3D scatter plot using Plotly Express
+        fig = px.scatter_3d(
+            x=point_cloud_np[:, 0],  # X coordinates
+            y=point_cloud_np[:, 1],  # Y coordinates
+            z=point_cloud_np[:, 2],  # Z coordinates
+            opacity=0.6,
+            title="Voxel Downsampled and Statistical Outliers Removed Point Cloud",
+        )
+
+        # Set axis labels
+        fig.update_layout(scene=dict(xaxis_title='X', yaxis_title='Y', zaxis_title='Z'))
+    return fig
+
+
+
