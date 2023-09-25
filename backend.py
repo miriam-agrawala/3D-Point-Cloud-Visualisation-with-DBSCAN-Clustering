@@ -106,4 +106,3 @@ def plot_preprocessed(downsampled_lidar):
     return fig
 
 
-
