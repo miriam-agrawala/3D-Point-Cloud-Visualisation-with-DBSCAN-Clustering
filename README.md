@@ -14,6 +14,8 @@ The different parameters that can be changed to obtain the segmentation are: Flo
 
 | Parameter            | Description                                                                                   |
 |----------------------|-----------------------------------------------------------------------------------------------|
+| **Number of Neighbours** | Sets the number of neighbours to consider when calculating the mean and standard deviation for statistical outlier removal.    |
+| **Standard Deviation Ratio** | Sets threshold that controls how far a point's distance from the mean can be before it is considered a statistical outlier.    |
 | **Floor/Ceiling Threshold** | Sets the threshold for identifying floor and ceiling surfaces. A higher value makes it more strict, while a lower value considers more points as part of the floor or ceiling.   |
 | **Wall Threshold**        | Sets the threshold for identifying wall surfaces. Increasing it makes the detection more strict, while decreasing it identifies more points as part of walls.          |
 | **Voxel Size**            | Adjusts the voxel size to control the level of point cloud downsampling. A smaller voxel size retains more detail, while a larger size reduces the data for faster processing. |
