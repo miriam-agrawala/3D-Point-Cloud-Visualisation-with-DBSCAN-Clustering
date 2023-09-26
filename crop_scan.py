@@ -50,6 +50,6 @@ def pick_points(pcd):
     # Close the visualization window
     vis.destroy_window()
 
-if '__name__' == '__main__':
+if __name__ == '__main__':
     # Call the pick_points function to interactively crop the point cloud
     pick_points(point_cloud)
