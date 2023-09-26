@@ -4,12 +4,27 @@ The object of this project was to create a scan using a LiDAR sensor and use the
 
 In the resulting program, the user can upload a LiDAR scan of an environment of their choice into a webapplication and use different handles to find the optimal parameters for an image segmentation. The more accurate the scan captures the environment the better the segmentation will be!
 
-To use the program, please download the "backend.py", "crop_scan.py" and "streamlit.py" and save them in the same folder. After running the streamlit.py in an IDE (like VS Code), a webapplication window will open. There, you can upload your LiDAR Scan in .ply format via drag and drop. Set the handles to your desired values and press "Visualize". A 3D model of your scan with a segmentation will open in a new window.  
+In the Streamlit GUI, you can upload your LiDAR Scan in _.ply_ format via drag and drop. Set the parameters to your desired values and press "Visualize". A 3D model of your scan with a segmentation will open in a new window.  
 
-When running the "crop_scan.py" another interactive window will open: you can select and save a portion of the point cloud using a bounding box.  
+__Extra:__  
+Run the **crop_scan.py** file to open another interactive window: you can select and save a section of the point cloud using a bounding box.  
+
+## Installation and run
+
+Download and install:   
+```
+git clone https://github.com/miriam-agrawala/3D-Point-Cloud-Visualisation-with-DBSCAN-Clustering.git
+cd 3D-Point-Cloud-Visualisation-with-DBSCAN-Clustering
+pip install -r requirements.txt  
+```
+
+Then, run this line in the correct directory:     
+```
+streamlit run app.py  
+```
 
 
-### Background Knowledge
+## Background Knowledge
 The different parameters that can be changed to obtain the segmentation are: Floor/Ceiling Threshold, Wall Threshold, Voxel Size, Distance Threshold, RANSAC N, Number of Iterations, Epsilon (eps) and Minimum Points. Adjusting each of these parameters has a different effect:    
 
 | Parameter            | Description                                                                                   |
